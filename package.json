@@ -2,8 +2,8 @@
   "name": "nxgrid",
   "version": "1.0.7",
   "description": "A super simple and powerful grid system built on typescript and react. Uses CSS Grid to keep things fast without needing media queries.",
-  "main": "./dist/Grid.js",
-  "types": "./dist/Grid.d.ts",
+  "main": "./dist/src/Grid.js",
+  "types": "./dist/src/Grid.d.ts",
   "dependencies": {
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
@@ -11,20 +11,38 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/enzyme": "^3.9.2",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/mocha": "^5.2.6",
     "awesome-typescript-loader": "^5.2.1",
+    "chai": "^4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "mocha": "^6.1.4",
+    "npm-run-all": "^4.1.5",
+    "shx": "^0.3.2",
     "source-map-loader": "^0.2.4",
+    "typedoc": "^0.14.2",
     "typescript": "^3.4.5",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build && npm run test-only",
     "preversion": "tsc",
-    "postversion": "Successfully compiled typescript and added a new version"
+    "postversion": "Successfully compiled typescript and added a new version",
+    "setup": "npm i",
+    "build": "tsc",
+    "build-watch": "tsc --watch",
+    "test-only": "mocha dist/test/",
+    "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./dev/src/",
+    "posttypedoc": "shx cp .nojekyll docs/.nojekyll",
+    "clean": "shx rm -rf node_modules/ dist/ docs/"
   },
   "files": [
-    "src",
-    "dist"
+    "dev/src",
+    "dist/src"
   ],
   "author": "",
   "license": "ISC"

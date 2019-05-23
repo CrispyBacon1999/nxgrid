@@ -44,8 +44,8 @@ export class Grid extends React.Component<IGridProps, IGridState> {
     var style = {
       display: "grid",
       gridTemplateColumns: this.props.method
-        ? `repeat(${this.props.method}, minmax(${this.props.minWidth}, ${this
-            .props.maxWidth || "1fr"}))`
+        ? `repeat(${this.props.method}, minmax(${this.props.minWidth ||
+            "0px"}, ${this.props.maxWidth || "1fr"}))`
         : this.props.customCols ||
           `repeat(${this.props.cols || defaultCols}, 1fr)`,
       gridGap: `${this.props.gap}px`
@@ -70,18 +70,21 @@ export interface ICellState {}
 
 export class Cell extends React.Component<ICellProps, ICellState> {
   render() {
-    var style: React.CSSProperties = {
+    var style = {
       gridColumn:
         this.props.start && this.props.span
-          ? `${this.props.start == "start" ? this.props.start : 1} / ${
-              this.props.span == "full" ? this.props.span : "-1"
+          ? `${this.props.start != "start" ? this.props.start : 1} / ${
+              this.props.span != "full" ? `span ${this.props.span}` : -1
             }`
-          : this.props.start && !this.props.span ? `${this.props.start} / span 1`
-          : this.props.span && !this.props.start ? `span ${this.props.span}`
+          : this.props.start && !this.props.span
+          ? `${this.props.start} / span 1`
+          : this.props.span && !this.props.start
+          ? `span ${this.props.span}`
+          : "span 1"
     };
 
     Object.assign(style, this.props.style);
 
-    return <div>{this.props.children}</div>;
+    return <div style={style}>{this.props.children}</div>;
   }
 }

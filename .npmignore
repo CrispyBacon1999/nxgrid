@@ -1,0 +1,9 @@
+dev/
+docs/
+tsconfig.json
+.travis.yml
+.nojekyll
+dist/test/
+.npmignore
+
+{nxgrid}-*.tgz
