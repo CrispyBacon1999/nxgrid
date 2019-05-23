@@ -6,7 +6,11 @@
 
 <p align="center">
 <a href="https://travis-ci.com/CrispyBacon1999/nxgrid"><img src="https://travis-ci.com/CrispyBacon1999/nxgrid.svg?branch=master" /></a>
+<a href="https://circleci.com/gh/CrispyBacon1999/nxgrid/tree/master"><img src="https://circleci.com/gh/CrispyBacon1999/nxgrid/tree/master.svg?style=svg" /></a>
 <a href="https://npmjs.com/package/nxgrid"><img src="https://badge.fury.io/js/nxgrid.svg" alt="npm version" height="18"></a>
+<a href="https://npmjs.com/package/nxgrid"><img src="https://img.shields.io/bundlephobia/min/nxgrid.svg" alt="min code size" height="18">
+<a href="https://npmjs.com/package/nxgrid"><img src="https://img.shields.io/bundlephobia/minzip/nxgrid.svg" alt="minzip code size" height="18">
+<a href="https://npmjs.com/package/nxgrid"><img src="https://img.shields.io/node/v/nxgrid.svg" alt="min package version" height="18">
 </p>
 
 <h3>Usage</h3>
