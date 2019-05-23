@@ -1,24 +1,33 @@
 language: node_js
 
-node_js:
-  - "6"
-  - "10"
-
-before_script:
-  - npm run setup
-  - npm run build
-
-script:
-  - npm run test-only
-
-after_success:
-  - npm run typedoc
-  - npm pack
+stages:
+  - test
+  - name: deploy
+    if: branch = master
 
 jobs:
   include:
-    - stage: deploy-pages
-      node_js": "11"
+    - stage: test
+      node_js:
+        - "6"
+        - "7"
+        - "8"
+        - "9"
+        - "10"
+
+      before_script:
+        - npm run setup
+        - npm run build
+
+      script:
+        - npm run test-only
+
+      after_success:
+        - npm run typedoc
+        - npm pack
+
+    - stage: deploy
+      node_js": "10"
       deploy:
         provider: pages
         skip_cleanup: true
@@ -26,10 +35,6 @@ jobs:
         github_token: $GITHUB_TOKEN
         on:
           tags: true
-
-    - stage: deploy-release
-      node_js": "11"
-      deploy:
         provider: releases
         api_key: $GITHUB_TOKEN
         file_glob: true
@@ -37,9 +42,6 @@ jobs:
         skip_cleanup: true
         on:
           tags: true
-
-    - stage: deploy-npm
-      node_js": "11"
       deploy:
         provider: npm
         skip_cleanup: true
