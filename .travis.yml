@@ -2,9 +2,6 @@ language: node_js
 
 node_js:
   - "6"
-  - "7"
-  - "8"
-  - "9"
   - "10"
 
 before_script:
@@ -18,23 +15,35 @@ after_success:
   - npm run typedoc
   - npm pack
 
-deploy:
-  - provider: pages
-    skip_cleanup: true
-    local_dir: docs/
-    github_token: $GITHUB_TOKEN
-    on:
-      tags: true
-  - provider: releases
-    api_key: $GITHUB_TOKEN
-    file_glob: true
-    file: "nxgrid-*.tgz"
-    skip_cleanup: true
-    on:
-      tags: true
-  - provider: npm
-    skip_cleanup: true
-    email: bacon.josh09@gmail.com
-    api_key: $NPM_TOKEN
-    on:
-      tags: true
+jobs:
+  include:
+    - stage: deploy-pages
+      node_js": "11"
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        local_dir: docs/
+        github_token: $GITHUB_TOKEN
+        on:
+          tags: true
+
+    - stage: deploy-release
+      node_js": "11"
+      deploy:
+        provider: releases
+        api_key: $GITHUB_TOKEN
+        file_glob: true
+        file: "nxgrid-*.tgz"
+        skip_cleanup: true
+        on:
+          tags: true
+
+    - stage: deploy-npm
+      node_js": "11"
+      deploy:
+        provider: npm
+        skip_cleanup: true
+        email: bacon.josh09@gmail.com
+        api_key: $NPM_TOKEN
+        on:
+          tags: true
