@@ -1,5 +1,12 @@
 language: nodejs
 
+nodejs:
+  - "6"
+  - "7"
+  - "8"
+  - "9"
+  - "10"
+
 before_script:
   - npm run setup
   - npm run build
