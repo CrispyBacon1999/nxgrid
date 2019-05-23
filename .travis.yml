@@ -24,7 +24,8 @@ jobs:
         - npm pack
 
     - stage: deploy
-      node_js": "10"
+      node_js":
+        - "10"
       deploy:
         provider: pages
         skip_cleanup: true
