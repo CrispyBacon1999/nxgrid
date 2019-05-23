@@ -31,7 +31,6 @@
   "scripts": {
     "test": "npm run build && npm run test-only",
     "preversion": "tsc",
-    "postversion": "Successfully compiled typescript and added a new version",
     "setup": "npm i",
     "build": "tsc",
     "build-watch": "tsc --watch",
