@@ -43,6 +43,10 @@
     "dev/src",
     "dist/src"
   ],
-  "author": "",
-  "license": "ISC"
+  "author": "Josh Bacon",
+  "license": "GNU GPLv3",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "engineStrict": true
 }
