@@ -94,11 +94,12 @@ export class Grid extends React.Component<IGridProps, IGridState> {
         : this.props.customCols ||
           `repeat(${this.props.cols || defaultCols}, 1fr)`,
       gridGap: `${this.props.gap}px`,
-      gridTemplateRows:
-        this.props.customRows || this.props.rows
-          ? `repeat(${this.props.rows}, ${this.props.rowHeight || "1fr"})`
-          : "",
-      gridAutoFill: this.props.dense ? "dense" : "",
+      gridTemplateRows: this.props.customRows
+        ? this.props.customRows
+        : this.props.rows
+        ? `repeat(${this.props.rows}, ${this.props.rowHeight || "1fr"})`
+        : "",
+      gridAutoFlow: this.props.dense ? "dense" : "",
     };
 
     Object.assign(style, this.props.style);
