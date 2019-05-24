@@ -14,6 +14,7 @@ export enum CellMethod {
   FILL = "auto-fill",
 }
 
+// TODO Allow for grid areas to be used.
 export interface IGridProps {
   /** The style of the component. Will overwrite any other styles that are dynamically generated */
   style?: React.CSSProperties;
@@ -68,7 +69,7 @@ export interface IGridProps {
    * It will likely make your grid appear out of order as elements will be placed where they fit, so don't rely on this for a grid that needs to be perfectly fit.
    */
   dense?: boolean;
-  /** THIS IS CURRENTLY UNUSED
+  /**
    * Should the grid automatically stack based on columns instead of rows when it hits the max number?
    * Use `row` to add more rows on to the bottom of the grid when the max number of rows is hit.
    * Use `column` to add more columns to the right of the grid when the max number of columns is hit.
@@ -86,6 +87,7 @@ export class Grid extends React.Component<IGridProps, IGridState> {
   }
 
   render(): any {
+    // TODO Change styles based on gridAutoFlow direction
     var style = {
       display: "grid",
       gridTemplateColumns: this.props.method
