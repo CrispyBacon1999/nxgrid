@@ -43,6 +43,44 @@ describe("Grid", () => {
       );
       expect(wrapper.contains(<p>Test</p>)).to.equal(true);
     });
+    it("can be dense", () => {
+      const wrapper = shallow(
+        <Grid dense>
+          <p>Test</p>
+        </Grid>
+      );
+      expect(wrapper.get(0).props.style.gridAutoFlow).to.equal("dense");
+    });
+    it("can have explicit rows", () => {
+      const wrapper = shallow(
+        <Grid rows={8}>
+          <p>Test</p>
+        </Grid>
+      );
+      expect(wrapper.get(0).props.style.gridTemplateRows).to.equal(
+        "repeat(8, 1fr)"
+      );
+    });
+    it("can have explicit rows with height", () => {
+      const wrapper = shallow(
+        <Grid rows={8} rowHeight="50px">
+          <p>Test</p>
+        </Grid>
+      );
+      expect(wrapper.get(0).props.style.gridTemplateRows).to.equal(
+        "repeat(8, 50px)"
+      );
+    });
+    it("can have custom rows", () => {
+      const wrapper = shallow(
+        <Grid customRows="100px 200px 300px">
+          <p>Test</p>
+        </Grid>
+      );
+      expect(wrapper.get(0).props.style.gridTemplateRows).to.equal(
+        "100px 200px 300px"
+      );
+    });
   });
 });
 
