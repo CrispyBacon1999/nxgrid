@@ -20,6 +20,7 @@ deploy:
   local_dir: docs/
   github_token: $GITHUB_TOKEN
   on:
+    branch: master
     tags: true
   provider: releases
   api_key: $GITHUB_TOKEN
@@ -27,6 +28,7 @@ deploy:
   file: "nxgrid-*.tgz"
   skip_cleanup: true
   on:
+    branch: master
     tags: true
 deploy:
   provider: npm
@@ -34,4 +36,5 @@ deploy:
   email: bacon.josh09@gmail.com
   api_key: $NPM_TOKEN
   on:
+    branch: master
     tags: true
