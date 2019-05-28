@@ -1,10 +1,9 @@
-dev/
 docs/
 tsconfig.json
 .travis.yml
 .nojekyll
 dist/test/
-dev/test/
+dev/**/*
 .npmignore
 
 {nxgrid}-*.tgz
