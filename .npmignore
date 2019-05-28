@@ -4,6 +4,7 @@ tsconfig.json
 .travis.yml
 .nojekyll
 dist/test/
+dev/test/
 .npmignore
 
 {nxgrid}-*.tgz
