@@ -117,6 +117,8 @@ export interface ICellProps {
   span?: string | number;
   /** Where to start the element. Can be a number, or a string of "start" */
   start?: string | number;
+  /** Will set the grid-area to this property so it can be used for responsive layouts */
+  name?: string;
 }
 
 export interface ICellState {}
@@ -134,6 +136,7 @@ export class Cell extends React.Component<ICellProps, ICellState> {
           : this.props.span && !this.props.start
           ? `span ${this.props.span}`
           : "span 1",
+      gridArea: this.props.name,
     };
 
     Object.assign(style, this.props.style);
