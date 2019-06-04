@@ -1,6 +1,5 @@
 language: node_js
 
-
 node_js:
   - "6"
 
@@ -17,24 +16,24 @@ after_success:
 
 deploy:
   - provider: pages
-  skip_cleanup: true
-  local_dir: docs/
-  github_token: $GITHUB_TOKEN
-  verbose: true
-  on:
-    branch: master
+    skip_cleanup: true
+    local_dir: docs/
+    github_token: $GITHUB_TOKEN
+    verbose: true
+    on:
+      branch: master
   - provider: releases
-  api_key: $GITHUB_TOKEN
-  file_glob: true
-  file: "nxgrid-*.tgz"
-  skip_cleanup: true
-  on:
-    branch: master
-    tags: true
+    api_key: $GITHUB_TOKEN
+    file_glob: true
+    file: "nxgrid-*.tgz"
+    skip_cleanup: true
+    on:
+      branch: master
+      tags: true
   - provider: npm
-  skip_cleanup: true
-  email: bacon.josh09@gmail.com
-  api_key: $NPM_TOKEN
-  on:
-    branch: master
-    tags: true
+    skip_cleanup: true
+    email: bacon.josh09@gmail.com
+    api_key: $NPM_TOKEN
+    on:
+      branch: master
+      tags: true
