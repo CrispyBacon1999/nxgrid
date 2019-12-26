@@ -1,6 +1,6 @@
 {
   "name": "nxgrid",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "A super simple and powerful grid system built on typescript and react. Uses CSS Grid to keep things fast without needing media queries.",
   "main": "./dist/src/Grid.js",
   "types": "./dist/src/Grid.d.ts",
